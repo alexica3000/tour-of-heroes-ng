@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {from, interval, of, Subscription} from "rxjs";
+import {from, fromEvent, interval, map, of, Subscription, take, tap} from "rxjs";
 
 @Component({
   selector: 'app-rxjs-test',
@@ -7,11 +7,13 @@ import {from, interval, of, Subscription} from "rxjs";
   styleUrls: ['./rxjs-test.component.css']
 })
 export class RxjsTestComponent implements OnInit, OnDestroy {
-  intervalSubscription$: Subscription;
-  currentNumber: number = 0;
+  private intervalSubscription$: Subscription;
+  private positionsSubscription$: Subscription;
+  public currentNumber: number = 0;
 
   constructor() {
     this.intervalSubscription$ = new Subscription();
+    this.positionsSubscription$ = new Subscription();
   }
 
   ngOnInit(): void {
@@ -28,9 +30,28 @@ export class RxjsTestComponent implements OnInit, OnDestroy {
       this.currentNumber = item;
       console.log(`interval .. ${item}`);
     });
+
+    of(3, 6, 9)
+      .pipe(
+        map(item => item * 2),
+      )
+      .subscribe(item => console.log(item));
+
+    this.positionsSubscription$ = fromEvent<PointerEvent>(document, 'click')
+    .pipe(
+      map(ev => [ev.clientX, ev.clientY]),
+      tap(ev => console.log(`clicks: x: ${ev[0]}, y: ${ev[1]}`))
+    )
+      .subscribe(clicks => this.logClicksPositions(clicks));
   }
 
   ngOnDestroy() {
     this.intervalSubscription$.unsubscribe();
+    this.positionsSubscription$.unsubscribe();
+  }
+
+  logClicksPositions(clicks: number[]): void {
+    let [x, y] = clicks;
+    console.log(`x: ${x}, y: ${y}`)
   }
 }
