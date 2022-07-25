@@ -14,6 +14,7 @@ import { InMemoryDataService } from "./services/in-memory-data.service";
 import { HeroSearchComponent } from "./components/hero-search/hero-search.component";
 import { RxjsTestComponent } from './components/rxjs-test/rxjs-test.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostsComponent } from './components/posts/posts.component';
     DashboardComponent,
     HeroSearchComponent,
     RxjsTestComponent,
-    PostsComponent
+    PostsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
