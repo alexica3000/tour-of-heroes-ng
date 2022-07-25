@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
-import {Observable} from "rxjs";
-import {Post} from "../../interfaces/post";
 
 @Component({
   selector: 'app-posts',
@@ -9,13 +7,12 @@ import {Post} from "../../interfaces/post";
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  posts$: Observable<Post[]> | undefined;
+  posts$ = this.postService.postsWithUsers$;
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
   ) { }
 
   ngOnInit(): void {
-    this.posts$ = this.postService.getPosts();
   }
 }

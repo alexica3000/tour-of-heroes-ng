@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, tap} from "rxjs";
+import {tap} from "rxjs";
 import {User} from "../interfaces/user";
 
 @Injectable({
@@ -9,14 +9,12 @@ import {User} from "../interfaces/user";
 export class UserService {
   private userUrl = 'api/users';
 
+  users$ = this.http.get<User[]>(this.userUrl)
+    .pipe(
+      tap(_ => console.log('fetched users')),
+    );
+
   constructor(
     private http: HttpClient,
   ) { }
-
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.userUrl)
-      .pipe(
-        tap(_ => console.log('fetched users')),
-      )
-  }
 }
