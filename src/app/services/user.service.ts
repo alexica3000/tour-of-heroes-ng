@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs";
+import {shareReplay, tap} from "rxjs";
 import {User} from "../interfaces/user";
 
 @Injectable({
@@ -12,6 +12,7 @@ export class UserService {
   users$ = this.http.get<User[]>(this.userUrl)
     .pipe(
       tap(_ => console.log('fetched users')),
+      shareReplay(1),
     );
 
   constructor(

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, combineLatest, concatMap, map, merge, scan, Subject, tap} from "rxjs";
+import {BehaviorSubject, combineLatest, concatMap, map, merge, scan, shareReplay, Subject, tap} from "rxjs";
 import {Post} from "../interfaces/post";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "./user.service";
@@ -22,7 +22,8 @@ export class PostService {
     map(([posts, users]) => posts.map(post => ({
       ...post,
       userName: users.find(u => post.userId === u.id)?.name,
-    })))
+    }))),
+    shareReplay(1),
   );
 
   private postSelectedSubject = new BehaviorSubject<number>(0);
