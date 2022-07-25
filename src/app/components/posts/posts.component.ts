@@ -15,7 +15,7 @@ export class PostsComponent implements OnInit {
   userSelectedAction$ = this.userSelectedSubject.asObservable();
 
   posts$ = combineLatest([
-    this.postService.postsWithUsers$,
+    this.postService.postsWithAdd$,
     this.userSelectedAction$
   ]).pipe(
     map(([posts, selectedUserId]) => posts.filter(post => selectedUserId ? post.userId === selectedUserId : true)),
@@ -37,5 +37,9 @@ export class PostsComponent implements OnInit {
 
   onSelectedDetails(userId: number): void {
     this.postService.selectedPostChanged(userId);
+  }
+
+  onAdd(): void {
+    this.postService.addPost();
   }
 }

@@ -9,6 +9,10 @@
     >{{ user.name}}</option>
   </select>
 
+  <button
+    type="button"
+    (click)="onAdd()"
+  >Add Product</button>
   <table *ngIf="posts$ | async as posts">
     <thead>
       <tr>
