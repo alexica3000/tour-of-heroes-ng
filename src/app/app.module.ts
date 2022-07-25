@@ -15,6 +15,7 @@ import { HeroSearchComponent } from "./components/hero-search/hero-search.compon
 import { RxjsTestComponent } from './components/rxjs-test/rxjs-test.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { UserComponent } from './components/user/user.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserComponent } from './components/user/user.component';
     HeroSearchComponent,
     RxjsTestComponent,
     PostsComponent,
-    UserComponent
+    UserComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -18,12 +18,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts">
+      <tr
+        *ngFor="let post of posts"
+        [ngClass]="{active: post?.id === (selectedPost$ | async)?.id }"
+      >
         <td>
           {{ post.id }}
         </td>
         <td>
           {{ post.title }}
+          <button
+            type="button"
+            (click)="onSelectedDetails(post.id)"
+          >details</button>
         </td>
         <td>
           {{ post.userName }}
@@ -31,4 +38,6 @@
       </tr>
     </tbody>
   </table>
+
+  <app-post-detail></app-post-detail>
 </div>

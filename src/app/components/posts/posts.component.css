@@ -1,3 +1,13 @@
 select {
   margin: 2em;
 }
+
+button {
+  padding: 5px;
+  margin: 0;
+}
+
+.active {
+  background: #336699;
+  color: white;
+}

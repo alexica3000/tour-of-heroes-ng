@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {combineLatest, map, tap} from "rxjs";
+import {BehaviorSubject, combineLatest, map, tap} from "rxjs";
 import {Post} from "../interfaces/post";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "./user.service";
@@ -24,6 +24,20 @@ export class PostService {
       userName: users.find(u => post.userId === u.id)?.name,
     })))
   );
+
+  private postSelectedSubject = new BehaviorSubject<number>(0);
+  postSelectedAction$ = this.postSelectedSubject.asObservable();
+
+  selectedPost$ = combineLatest([
+    this.postsWithUsers$,
+    this.postSelectedAction$
+  ]).pipe(
+    map(([posts, selectedPostId]) => posts.find(post => post.id === selectedPostId)),
+);
+
+  selectedPostChanged(selectedPostId: number): void {
+    this.postSelectedSubject.next(selectedPostId);
+  }
 
   constructor(
     private http: HttpClient,

@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
-import {BehaviorSubject, combineLatest, filter, map, pipe, startWith, Subject} from "rxjs";
+import {BehaviorSubject, combineLatest, map} from "rxjs";
 import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  styleUrls: ['./posts.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostsComponent implements OnInit {
   users$ = this.userService.users$;
@@ -20,6 +21,8 @@ export class PostsComponent implements OnInit {
     map(([posts, selectedUserId]) => posts.filter(post => selectedUserId ? post.userId === selectedUserId : true)),
   );
 
+  selectedPost$ = this.postService.selectedPost$;
+
   constructor(
     private postService: PostService,
     private userService: UserService,
@@ -30,5 +33,9 @@ export class PostsComponent implements OnInit {
 
   onSelected(userId: string): void {
     this.userSelectedSubject.next(+userId);
+  }
+
+  onSelectedDetails(userId: number): void {
+    this.postService.selectedPostChanged(userId);
   }
 }

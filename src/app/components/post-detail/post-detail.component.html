@@ -1,0 +1,11 @@
+<div *ngIf="post$ | async as post" class="post-detail">
+  <div>
+    <strong>ID: </strong> {{ post.id }}
+  </div>
+  <div>
+    <strong>Name: </strong> {{ post.title }}
+  </div>
+  <div>
+    <strong>UserId: </strong> {{ post.userId }}
+  </div>
+</div>
