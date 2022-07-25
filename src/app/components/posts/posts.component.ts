@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
-import {Observable, Subscription} from "rxjs";
+import {Observable} from "rxjs";
 import {Post} from "../../interfaces/post";
 
 @Component({
@@ -9,18 +9,13 @@ import {Post} from "../../interfaces/post";
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  posts: Post[] = [];
-  sub!: Subscription;
+  posts$: Observable<Post[]> | undefined;
 
   constructor(
     private postService: PostService
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.postService.getPosts()
-      .subscribe({
-        next: posts => this.posts = posts,
-        error: err => console.log(err),
-      });
+    this.posts$ = this.postService.getPosts();
   }
 }
