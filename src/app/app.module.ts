@@ -13,6 +13,7 @@ import { HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import { InMemoryDataService} from "./in-memory-data.service";
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RxjsTestComponent } from './components/rxjs-test/rxjs-test.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RxjsTestComponent } from './components/rxjs-test/rxjs-test.component';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    RxjsTestComponent
+    RxjsTestComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

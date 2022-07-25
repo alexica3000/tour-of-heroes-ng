@@ -1,0 +1,10 @@
+<div>
+  <ul *ngIf="posts.length">
+    <li *ngFor="let post of posts">
+      <span>ID: {{ post.id }}</span><br>
+      <span>Title: {{ post.title }}</span><br>
+      <span>UserId: {{ post.userId }}</span><br>
+      <span>Body: {{ post.body }}</span><br><br>
+    </li>
+  </ul>
+</div>
