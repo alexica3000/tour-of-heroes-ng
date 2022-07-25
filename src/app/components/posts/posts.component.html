@@ -1,4 +1,14 @@
 <div>
+  <select
+    (change)="onSelected($any($event.target).value)"
+  >
+    <option value="0">- User -</option>
+    <option
+      *ngFor="let user of users$ | async"
+      [value]="user.id"
+    >{{ user.name}}</option>
+  </select>
+
   <table *ngIf="posts$ | async as posts">
     <thead>
       <tr>

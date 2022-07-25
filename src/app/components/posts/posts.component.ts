@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
+import {BehaviorSubject, combineLatest, filter, map, pipe, startWith, Subject} from "rxjs";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-posts',
@@ -7,12 +9,26 @@ import {PostService} from "../../services/post.service";
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  posts$ = this.postService.postsWithUsers$;
+  users$ = this.userService.users$;
+  private userSelectedSubject = new BehaviorSubject<number>(0);
+  userSelectedAction$ = this.userSelectedSubject.asObservable();
+
+  posts$ = combineLatest([
+    this.postService.postsWithUsers$,
+    this.userSelectedAction$
+  ]).pipe(
+    map(([posts, selectedUserId]) => posts.filter(post => selectedUserId ? post.userId === selectedUserId : true)),
+  );
 
   constructor(
     private postService: PostService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onSelected(userId: string): void {
+    this.userSelectedSubject.next(+userId);
   }
 }
