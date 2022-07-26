@@ -6,6 +6,7 @@ import { HeroDetailComponent } from "./components/hero-detail/hero-detail.compon
 import {RxjsTestComponent} from "./components/rxjs-test/rxjs-test.component";
 import {PostsComponent} from "./components/posts/posts.component";
 import {UserComponent} from "./components/user/user.component";
+import {FormExampleComponent} from "./components/form-example/form-example.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'rxjs', component: RxjsTestComponent},
   {path: 'posts', component: PostsComponent},
   {path: 'users', component: UserComponent},
+  {path: 'form-example', component: FormExampleComponent}
 ];
 
 @NgModule({

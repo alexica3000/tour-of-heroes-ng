@@ -1,0 +1,86 @@
+<div class="form-example">
+<!--  (ngSubmit)="onSubmit(f)"-->
+  <form
+    (ngSubmit)="onSubmit()"
+    #f="ngForm"
+  >
+    <div class="form-field">
+      <label for="name">Enter Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        ngModel
+        required
+        #name="ngModel"
+      >
+    </div>
+    <div *ngIf="!name.valid && name.touched">Please enter a valid name.</div>
+
+    <div class="form-field">
+      <label for="age">Enter age:</label>
+      <input
+        type="number"
+        id="age"
+        name="age"
+        ngModel
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="email">Enter email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+        email
+        required
+      >
+    </div>
+
+    <div class="form-field">
+      <select
+        name="select_test"
+        [ngModel]="defaultSelect"
+      >
+        <option value="0">- Select -</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <div *ngFor="let gender of genders">
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            [value]="gender"
+            ngModel
+          >
+          {{ gender}}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <button
+        type="submit"
+        [disabled]="!f.valid"
+      >Submit</button>
+    </div>
+  </form>
+
+  <div *ngIf="submitted">
+    <div>Entered data</div>
+    <div>Name: {{ enteredData.name}}</div>
+    <div>Age: {{ enteredData.age}}</div>
+    <div>Email: {{ enteredData.email}}</div>
+    <div>Select: {{ enteredData.select_test}}</div>
+    <div>Gender: {{ enteredData.gender}}</div>
+  </div>
+</div>

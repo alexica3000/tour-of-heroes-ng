@@ -1,0 +1,20 @@
+.form-example {
+  width: 350px;
+}
+
+form {
+  margin: 20px;
+}
+
+.form-field {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+select,input {
+  width: 100%;
+}

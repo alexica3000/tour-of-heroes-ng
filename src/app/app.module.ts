@@ -16,6 +16,7 @@ import { RxjsTestComponent } from './components/rxjs-test/rxjs-test.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { UserComponent } from './components/user/user.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { FormExampleComponent } from './components/form-example/form-example.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     RxjsTestComponent,
     PostsComponent,
     UserComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    FormExampleComponent
   ],
   imports: [
     BrowserModule,
