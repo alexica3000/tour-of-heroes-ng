@@ -1,0 +1,85 @@
+<div class="container mt-5 w-75">
+  <div class="row">
+    <div class="col col-12">
+      <form [formGroup]="signupForm!" (ngSubmit)="onSubmit()" autocomplete="off">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          >
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="!signupForm?.get('name')?.valid && signupForm?.get('name')?.touched"
+          >
+            <span *ngIf="signupForm?.get('name')?.hasError('nameIsForbidden')">This name is invalid</span>
+            <span *ngIf="signupForm?.get('name')?.hasError('required')">This name is invalid</span>
+          </div>
+        </div>
+
+        <div class="form-group mt-2">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          >
+          <div
+            class="invalid-feedback d-block"
+            *ngIf="!signupForm?.get('email')?.valid && signupForm?.get('email')?.touched"
+          >
+            <span *ngIf="signupForm?.get('email')?.hasError('required')">Please enter email</span>
+            <span *ngIf="signupForm?.get('email')?.hasError('emailIsForbidden')">This email is forbidden</span>
+          </div>
+        </div>
+
+        <div
+          class="form-check mt-2"
+          *ngFor="let gender of genders"
+        >
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="radio"
+              [value]="gender"
+              formControlName="gender"
+            >{{ gender }}
+          </label>
+        </div>
+
+        <div class="mt-4">
+          <div formArrayName="hobbies">
+            <h5>Your Hobbies</h5>
+            <button
+              class="btn btn-default"
+              type="button"
+              (click)="onAddHobby()"
+            >
+              Add Hobby
+            </button>
+            <div
+              class="form-group"
+              *ngFor="let hobbyControl of getHobbies().controls; let i = index"
+            >
+              <input
+                type="text"
+                class="form-control mt-1"
+                [formControlName]="i"
+              >
+            </div>
+            <div
+              class="invalid-feedback d-block"
+              *ngIf="!getHobbies().valid && getHobbies().touched"
+            >
+              Please enter hobbies
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
