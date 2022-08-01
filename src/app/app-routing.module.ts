@@ -8,6 +8,7 @@ import {PostsComponent} from "./components/posts/posts.component";
 import {UserComponent} from "./components/user/user.component";
 import {FormExampleComponent} from "./components/form-example/form-example.component";
 import {FormReactiveComponent} from "./components/form-reactive/form-reactive.component";
+import {CountdownParentComponent} from "./components/countdown-parent/countdown-parent.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'users', component: UserComponent},
   {path: 'form-example', component: FormExampleComponent},
   {path: 'form-reactive', component: FormReactiveComponent},
+  {path: 'countdown-timer', component: CountdownParentComponent}
 ];
 
 @NgModule({

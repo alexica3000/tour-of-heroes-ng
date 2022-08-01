@@ -18,6 +18,8 @@ import { UserComponent } from './components/user/user.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { FormExampleComponent } from './components/form-example/form-example.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { CountdownTimerComponent } from "./components/countdown-timer/countdown-timer.component";
+import { CountdownParentComponent } from './components/countdown-parent/countdown-parent.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { FormReactiveComponent } from './components/form-reactive/form-reactive.
     PostDetailComponent,
     FormExampleComponent,
     FormReactiveComponent,
+    CountdownTimerComponent,
+    CountdownParentComponent,
   ],
   imports: [
     BrowserModule,
