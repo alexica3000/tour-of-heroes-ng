@@ -20,6 +20,7 @@ import { FormExampleComponent } from './components/form-example/form-example.com
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { CountdownTimerComponent } from "./components/countdown-timer/countdown-timer.component";
 import { CountdownParentComponent } from './components/countdown-parent/countdown-parent.component';
+import { CountdownParentVcComponent } from './components/countdown-parent-vc/countdown-parent-vc.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CountdownParentComponent } from './components/countdown-parent/countdow
     FormReactiveComponent,
     CountdownTimerComponent,
     CountdownParentComponent,
+    CountdownParentVcComponent,
   ],
   imports: [
     BrowserModule,
