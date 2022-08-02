@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, NgForm, ReactiveFormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { FormReactiveComponent } from './components/form-reactive/form-reactive.
 import { CountdownTimerComponent } from "./components/countdown-timer/countdown-timer.component";
 import { CountdownParentComponent } from './components/countdown-parent/countdown-parent.component';
 import { CountdownParentVcComponent } from './components/countdown-parent-vc/countdown-parent-vc.component';
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { CountdownParentVcComponent } from './components/countdown-parent-vc/cou
       InMemoryDataService, { dataEncapsulation: false}
     )
   ],
-  providers: [],
+  providers: [
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
