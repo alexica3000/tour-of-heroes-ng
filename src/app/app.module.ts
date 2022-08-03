@@ -27,6 +27,7 @@ import {AdminModule} from "./admin/admin.module";
 import { LoginComponent } from './auth/login/login.component';
 import {AgGridModule} from "ag-grid-angular";
 import { AgComponent } from './components/ag/ag.component';
+import { AgUniversitiesComponent } from './components/ag-universities/ag-universities.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AgComponent } from './components/ag/ag.component';
     PageNotFoundComponent,
     LoginComponent,
     AgComponent,
+    AgUniversitiesComponent,
   ],
   imports: [
     BrowserModule,

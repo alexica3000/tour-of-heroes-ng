@@ -12,6 +12,7 @@ import {CountdownParentComponent} from "./components/countdown-parent/countdown-
 import {CountdownParentVcComponent} from "./components/countdown-parent-vc/countdown-parent-vc.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {AgComponent} from "./components/ag/ag.component";
+import {AgUniversitiesComponent} from "./components/ag-universities/ag-universities.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'countdown-timer', component: CountdownParentComponent},
   {path: 'countdown-time-vc', component: CountdownParentVcComponent},
   {path: 'ag', component: AgComponent},
+  {path: 'ag-univ', component: AgUniversitiesComponent},
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
