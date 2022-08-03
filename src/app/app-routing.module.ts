@@ -11,6 +11,7 @@ import {FormReactiveComponent} from "./components/form-reactive/form-reactive.co
 import {CountdownParentComponent} from "./components/countdown-parent/countdown-parent.component";
 import {CountdownParentVcComponent} from "./components/countdown-parent-vc/countdown-parent-vc.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {AgComponent} from "./components/ag/ag.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'form-reactive', component: FormReactiveComponent},
   {path: 'countdown-timer', component: CountdownParentComponent},
   {path: 'countdown-time-vc', component: CountdownParentVcComponent},
+  {path: 'ag', component: AgComponent},
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),

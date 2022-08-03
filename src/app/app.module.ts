@@ -25,6 +25,8 @@ import {UserService} from "./services/user.service";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {AdminModule} from "./admin/admin.module";
 import { LoginComponent } from './auth/login/login.component';
+import {AgGridModule} from "ag-grid-angular";
+import { AgComponent } from './components/ag/ag.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { LoginComponent } from './auth/login/login.component';
     CountdownParentVcComponent,
     PageNotFoundComponent,
     LoginComponent,
+    AgComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,10 +55,12 @@ import { LoginComponent } from './auth/login/login.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserModule,
+    AgGridModule,
     ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false}
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false}
+    // )
   ],
   providers: [
     UserService,
