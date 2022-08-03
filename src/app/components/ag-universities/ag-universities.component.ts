@@ -13,6 +13,7 @@ export class AgUniversitiesComponent implements OnInit {
   private agDataUrl = 'http://universities.hipolabs.com/search?country=';
 
   public columnDefs: ColDef[] = [
+    {headerName: 'ID', valueGetter: 'node.id'},
     {field: 'country', headerName: 'Country'},
     {field: 'alpha_two_code', headerName: 'Code'},
     {field: 'state-province', headerName: 'State'},
