@@ -22,6 +22,7 @@ import { CountdownTimerComponent } from "./components/countdown-timer/countdown-
 import { CountdownParentComponent } from './components/countdown-parent/countdown-parent.component';
 import { CountdownParentVcComponent } from './components/countdown-parent-vc/countdown-parent-vc.component';
 import {UserService} from "./services/user.service";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {UserService} from "./services/user.service";
     CountdownTimerComponent,
     CountdownParentComponent,
     CountdownParentVcComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

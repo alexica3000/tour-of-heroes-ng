@@ -10,6 +10,7 @@ import {FormExampleComponent} from "./components/form-example/form-example.compo
 import {FormReactiveComponent} from "./components/form-reactive/form-reactive.component";
 import {CountdownParentComponent} from "./components/countdown-parent/countdown-parent.component";
 import {CountdownParentVcComponent} from "./components/countdown-parent-vc/countdown-parent-vc.component";
+import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'form-example', component: FormExampleComponent},
   {path: 'form-reactive', component: FormReactiveComponent},
   {path: 'countdown-timer', component: CountdownParentComponent},
-  {path: 'countdown-time-vc', component: CountdownParentVcComponent}
+  {path: 'countdown-time-vc', component: CountdownParentVcComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
