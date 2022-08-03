@@ -8,7 +8,7 @@ import {LoginComponent} from "../auth/login/login.component";
 
 const routes: Routes = [
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [

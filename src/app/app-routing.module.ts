@@ -24,6 +24,10 @@ const routes: Routes = [
   {path: 'form-reactive', component: FormReactiveComponent},
   {path: 'countdown-timer', component: CountdownParentComponent},
   {path: 'countdown-time-vc', component: CountdownParentVcComponent},
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+  },
   {path: '**', component: PageNotFoundComponent},
 ];
 
