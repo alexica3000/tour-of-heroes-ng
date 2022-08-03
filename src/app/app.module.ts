@@ -23,6 +23,8 @@ import { CountdownParentComponent } from './components/countdown-parent/countdow
 import { CountdownParentVcComponent } from './components/countdown-parent-vc/countdown-parent-vc.component';
 import {UserService} from "./services/user.service";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import {AdminModule} from "./admin/admin.module";
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,11 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     CountdownParentComponent,
     CountdownParentVcComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    AdminModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
