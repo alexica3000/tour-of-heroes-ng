@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {CellClickedEvent, ColDef, GridReadyEvent} from "ag-grid-community";
+import {CellClickedEvent, ColDef, GridOptions, GridReadyEvent} from "ag-grid-community";
 import {Observable, tap} from "rxjs";
 import {AgGridAngular} from "ag-grid-angular";
 import {HttpClient} from "@angular/common/http";
@@ -11,18 +11,31 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AgUniversitiesComponent implements OnInit {
   private agDataUrl = 'http://universities.hipolabs.com/search?country=';
+  private alignedGrids: GridOptions[] = [];
 
   public columnDefs: ColDef[] = [
-    {headerName: 'ID', valueGetter: 'node.id'},
-    {field: 'country', headerName: 'Country'},
-    {field: 'alpha_two_code', headerName: 'Code'},
-    {field: 'state-province', headerName: 'State'},
-    {field: 'name'},
+    {headerName: 'ID', valueGetter: 'node.id', width: 50},
+    {field: 'country', headerName: 'Country', width: 200},
+    {field: 'alpha_two_code', headerName: 'Code', width: 200},
+    {field: 'state-province', headerName: 'State', width: 400},
+    {field: 'name', width: 1000},
   ];
 
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
+  };
+
+  firstGridOptions: GridOptions = {
+    suppressCellSelection: true,
+    alignedGrids: this.alignedGrids,
+    enableCellTextSelection: true,
+  };
+
+  secondGridOptions: GridOptions = {
+    suppressCellSelection: true,
+    alignedGrids: this.alignedGrids,
+    enableCellTextSelection: true,
   };
 
   public rowData$!: Observable<any[]>;
@@ -39,7 +52,7 @@ export class AgUniversitiesComponent implements OnInit {
         tap(_ => console.log('fetched ag data')),
       );
 
-    params.api.sizeColumnsToFit();
+    this.setupGrid();
   }
 
   onCellClicked(e: CellClickedEvent): void {
@@ -48,5 +61,10 @@ export class AgUniversitiesComponent implements OnInit {
 
   clearSelection(): void {
     this.agGrid.api.deselectAll();
+  }
+
+  private setupGrid(): void {
+    this.firstGridOptions.alignedGrids!.push(this.secondGridOptions);
+    this.secondGridOptions.alignedGrids!.push(this.firstGridOptions);
   }
 }
